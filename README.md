@@ -90,6 +90,12 @@ bash scripts/build.sh pc-x86_64 userdebug
 
 ## ⚙️ Identidade do IrisOS (`vendor/iris`)
 
+<p align="center">
+  <img src="assets/bootanimation_preview.gif" alt="IrisOS Bootanimation Preview" width="220" style="border-radius: 12px; border: 2px solid #38BDF8;"/>
+  <br/>
+  <sub><i>Animação de inicialização oficial do IrisOS com anéis em órbita contínua e núcleo pulsante.</i></sub>
+</p>
+
 As compilações do IrisOS definem as seguintes propriedades no sistema:
 * `ro.iris.version` — Versão atual do IrisOS (ex: `1.0-alpha`).
 * `ro.iris.build.type` — Tipo de release (`official`, `community` ou `nightly`).
