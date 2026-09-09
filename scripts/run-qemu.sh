@@ -14,6 +14,12 @@ if [ -z "$ISO_PATH" ]; then
         ISO_PATH="$FOUND_ISO"
     elif [ -f "IrisOS-x86_64.iso" ]; then
         ISO_PATH="IrisOS-x86_64.iso"
+    else
+        # Procura automaticamente qualquer ISO de Android/x86 na pasta Downloads
+        FOUND_ISO=$(find "$HOME/Downloads" -maxdepth 2 \( -iname "*android*.iso" -o -iname "*bliss*.iso" -o -iname "*iris*.iso" \) 2>/dev/null | head -n 1)
+        if [ -n "$FOUND_ISO" ]; then
+            ISO_PATH="$FOUND_ISO"
+        fi
     fi
 fi
 
