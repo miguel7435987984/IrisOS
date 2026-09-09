@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The IrisOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Nome padrão do dispositivo exibido no Bluetooth e Wi-Fi Direct -->
+    <string name="def_device_name">IrisOS Device</string>
+</resources>

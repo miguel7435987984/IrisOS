@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Remote para repositórios Treble GSI -->
+  <remote name="treble"
+          fetch="https://github.com/phhusson"
+          revision="android-14.0" />
+
+  <remote name="andyyan"
+          fetch="https://github.com/AndyCGYan"
+          revision="lineage-21_td" />
+
+  <!-- Device tree genérico Treble para compilar system.img (ARM64 A/B) -->
+  <project path="device/phh/treble"
+           name="device_phh_treble"
+           remote="treble" />
+</manifest>

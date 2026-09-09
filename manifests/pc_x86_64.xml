@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Remote para repositórios Android-x86 / BlissOS para PC -->
+  <remote name="bliss"
+          fetch="https://github.com/Bliss-OS"
+          revision="bliss-v17.x" />
+
+  <!-- Device Tree e configs de PC x86_64 -->
+  <project path="device/generic/common"
+           name="platform_device_generic_common"
+           remote="bliss" />
+
+  <!-- Instalador e gerador de imagem ISO com GRUB/UEFI -->
+  <project path="bootable/newinstaller"
+           name="platform_bootable_newinstaller"
+           remote="bliss" />
+
+  <!-- Kernel Linux LTS x86_64 com drivers de PC (Intel/AMD/Realtek/Wi-Fi) -->
+  <project path="kernel/x86_64"
+           name="kernel_x86"
+           remote="bliss" />
+</manifest>

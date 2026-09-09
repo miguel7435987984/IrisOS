@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Árvore de dispositivo (Device Tree) -->
+  <project path="device/xiaomi/garnet"
+           name="LineageOS/android_device_xiaomi_garnet"
+           remote="github"
+           revision="lineage-21.0" />
+
+  <!-- Árvores de Kernel e Módulos -->
+  <project path="kernel/xiaomi/sm7435"
+           name="LineageOS/android_kernel_xiaomi_sm7435"
+           remote="github"
+           revision="lineage-21.0" />
+
+  <project path="kernel/xiaomi/sm7435-modules"
+           name="LineageOS/android_kernel_xiaomi_sm7435-modules"
+           remote="github"
+           revision="lineage-21.0" />
+
+  <project path="kernel/xiaomi/sm7435-devicetrees"
+           name="LineageOS/android_kernel_xiaomi_sm7435-devicetrees"
+           remote="github"
+           revision="lineage-21.0" />
+
+  <!-- Árvore Proprietária (Vendor Blobs) -->
+  <project path="vendor/xiaomi/garnet"
+           name="TheMuppets/proprietary_vendor_xiaomi_garnet"
+           remote="github"
+           revision="lineage-21.0" />
+
+  <!-- Hardware Xiaomi específico -->
+  <project path="hardware/xiaomi"
+           name="LineageOS/android_hardware_xiaomi"
+           remote="github"
+           revision="lineage-21.0" />
+</manifest>

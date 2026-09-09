@@ -1,0 +1,78 @@
+name: Build IrisOS
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Selecione o Alvo de Compilação'
+        required: true
+        default: 'garnet'
+        type: choice
+        options:
+          - 'garnet'
+          - 'pc-x86_64'
+          - 'gsi-arm64'
+      build_type:
+        description: 'Tipo de Build'
+        required: true
+        default: 'userdebug'
+        type: choice
+        options:
+          - 'userdebug'
+          - 'user'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Compilar IrisOS (${{ inputs.target }})
+    # Executado no Self-Hosted Runner (para não sofrer com o limite de 14GB de disco do GitHub gratuito)
+    runs-on: [self-hosted, linux]
+
+    steps:
+      - name: Checkout do Repositório IrisOS
+        uses: actions/checkout@v4
+
+      - name: Configurar Ferramentas e Dependências
+        run: |
+          bash scripts/setup-host.sh
+
+      - name: Executar Compilação do IrisOS
+        run: |
+          bash scripts/build.sh ${{ inputs.target }} ${{ inputs.build_type }}
+
+      - name: Coletar e Empacotar Artefatos de Saída
+        id: collect_artifacts
+        run: |
+          mkdir -p artifacts
+          WORKDIR="$HOME/android/irisos/out/target/product"
+
+          if [ "${{ inputs.target }}" = "pc-x86_64" ]; then
+            find "$WORKDIR" -maxdepth 3 -name "*.iso" -exec cp {} artifacts/ \;
+          elif [ "${{ inputs.target }}" = "garnet" ]; then
+            find "$WORKDIR/garnet" -maxdepth 2 -name "lineage-*.zip" -o -name "IrisOS-*.zip" -o -name "boot.img" -exec cp {} artifacts/ \;
+          elif [ "${{ inputs.target }}" = "gsi-arm64" ]; then
+            find "$WORKDIR" -maxdepth 3 -name "system.img" -exec xz -k -9 {} \; -exec cp {}.xz artifacts/ \;
+          fi
+
+          cd artifacts
+          sha256sum * > SHA256SUMS.txt || true
+          echo "artifact_count=$(ls -1 | wc -l)" >> $GITHUB_OUTPUT
+
+      - name: Publicar Release no GitHub
+        if: steps.collect_artifacts.outputs.artifact_count > 0
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0-${{ inputs.target }}-${{ github.run_number }}
+          name: IrisOS 1.0 (${{ inputs.target }}) - Build #${{ github.run_number }}
+          body: |
+            ## 🌌 IrisOS v1.0
+
+            - **Alvo:** `${{ inputs.target }}`
+            - **Tipo de Compilação:** `${{ inputs.build_type }}`
+            - **Data:** $(date -u +'%Y-%m-%d %H:%M UTC')
+
+            ### Arquivos gerados
+            Consulte os checksums no arquivo `SHA256SUMS.txt` anexo.
+          files: artifacts/*
