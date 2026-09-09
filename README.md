@@ -86,6 +86,13 @@ bash scripts/build.sh garnet userdebug
 bash scripts/build.sh pc-x86_64 userdebug
 ```
 
+### 🖥️ Testar no PC via QEMU (Sem Instalação / Modo Live)
+Você pode testar o IrisOS PC em uma janela virtual com aceleração KVM sem tocar no seu disco físico:
+```bash
+bash scripts/run-qemu.sh [caminho/para/IrisOS-x86_64.iso]
+```
+> Na tela inicial do GRUB, basta selecionar a opção **"Live CD - Run IrisOS without installation"**. O sistema rodará 100% na memória RAM!
+
 ---
 
 ## ⚙️ Identidade do IrisOS (`vendor/iris`)

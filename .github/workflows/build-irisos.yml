@@ -50,6 +50,7 @@ jobs:
 
           if [ "${{ inputs.target }}" = "pc-x86_64" ]; then
             find "$WORKDIR" -maxdepth 3 -name "*.iso" -exec cp {} artifacts/ \;
+            find "$WORKDIR" -maxdepth 3 -name "system.img" -exec cp {} artifacts/IrisOS-x86_64-system.img \;
           elif [ "${{ inputs.target }}" = "garnet" ]; then
             find "$WORKDIR/garnet" -maxdepth 2 -name "lineage-*.zip" -o -name "IrisOS-*.zip" -o -name "boot.img" -exec cp {} artifacts/ \;
           elif [ "${{ inputs.target }}" = "gsi-arm64" ]; then
