@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Testar IrisOS no QEMU
+Comment=Inicia a máquina virtual QEMU com o IrisOS PC em modo Live
+Exec=bash -c "cd /home/miguel/Documentos/IrisOS && bash scripts/run-qemu.sh; read -p 'Pressione ENTER para fechar...' "
+Icon=utilities-terminal
+Terminal=true
+Categories=System;Emulator;
