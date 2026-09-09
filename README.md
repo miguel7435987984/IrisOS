@@ -1,7 +1,7 @@
 # 🌌 IrisOS
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/miguel7435987984/IrisOS/main/assets/banner.png" alt="IrisOS Banner" width="700" onerror="this.style.display='none'"/>
+  <img src="assets/banner.svg" alt="IrisOS Banner" width="100%"/>
 </p>
 
 <p align="center">
