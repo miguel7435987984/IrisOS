@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <!-- Remote para repositórios do LineageOS -->
+  <!-- Remote oficial LineageOS -->
   <remote name="lineage"
           fetch="https://github.com/LineageOS"
           review="review.lineageos.org"
@@ -21,6 +21,6 @@
            remote="lineage"
            sync-j="4" />
 
-  <!-- Importa o manifesto base do LineageOS 21.0 -->
+  <!-- Importa o manifesto base oficial do LineageOS 21.0 -->
   <include name="snippets/lineage.xml" />
 </manifest>
