@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <!-- Árvore de dispositivo (Device Tree) -->
+  <!-- Remote para repositórios crdroid (fontes oficiais do garnet Android 14) -->
+  <remote name="crdroid"
+          fetch="https://github.com/crdroidandroid"
+          revision="14.0" />
+
+  <!-- Remote para o kernel pré-compilado Android 14 do garnet -->
+  <remote name="garnet-pg"
+          fetch="https://github.com/garnet-playground"
+          revision="udc" />
+
+  <!-- Remote oficial LineageOS -->
+  <remote name="lineage"
+          fetch="https://github.com/LineageOS"
+          revision="refs/heads/lineage-21.0" />
+
+  <!-- Árvore de dispositivo (Device Tree - Android 14 / Lineage 21) -->
   <project path="device/xiaomi/garnet"
-           name="LineageOS/android_device_xiaomi_garnet"
-           remote="github"
-           revision="lineage-21.0" />
+           name="android_device_xiaomi_garnet"
+           remote="crdroid" />
 
-  <!-- Árvores de Kernel e Módulos -->
-  <project path="kernel/xiaomi/sm7435"
-           name="LineageOS/android_kernel_xiaomi_sm7435"
-           remote="github"
-           revision="lineage-21.0" />
+  <!-- Kernel Pré-compilado Oficial (kernel, dtbo, dtbs, modules) -->
+  <project path="device/xiaomi/garnet-kernel"
+           name="android_device_xiaomi_garnet-kernel"
+           remote="garnet-pg" />
 
-  <project path="kernel/xiaomi/sm7435-modules"
-           name="LineageOS/android_kernel_xiaomi_sm7435-modules"
-           remote="github"
-           revision="lineage-21.0" />
-
-  <project path="kernel/xiaomi/sm7435-devicetrees"
-           name="LineageOS/android_kernel_xiaomi_sm7435-devicetrees"
-           remote="github"
-           revision="lineage-21.0" />
-
-  <!-- Árvore Proprietária (Vendor Blobs) -->
+  <!-- Árvore Proprietária (Vendor Blobs - Câmera 200MP, Modem, UDFPS, Áudio) -->
   <project path="vendor/xiaomi/garnet"
-           name="TheMuppets/proprietary_vendor_xiaomi_garnet"
-           remote="github"
-           revision="lineage-21.0" />
+           name="proprietary_vendor_xiaomi_garnet"
+           remote="crdroid" />
 
-  <!-- Hardware Xiaomi específico -->
+  <!-- Hardware Xiaomi específico LineageOS -->
   <project path="hardware/xiaomi"
-           name="LineageOS/android_hardware_xiaomi"
-           remote="github"
-           revision="lineage-21.0" />
+           name="android_hardware_xiaomi"
+           remote="lineage" />
 </manifest>
